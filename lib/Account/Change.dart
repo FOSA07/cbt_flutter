@@ -1,7 +1,5 @@
 import 'package:cbt_flutter/Account/login.dart';
-import 'package:cbt_flutter/Users/Home.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 // ignore: camel_case_types
 class Change_Password extends StatelessWidget {
@@ -59,7 +57,8 @@ class Change_Password extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: ElevatedButton(onPressed: (){
-                    Get.to(()=> const Sent_Email_Message());
+                    // Get.to(()=> const Sent_Email_Message());
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Sent_Email_Message()));
                   }, child: const Text('Continue',
                     style: TextStyle(
                       fontSize: 20,
@@ -146,7 +145,8 @@ class Sent_Email_Message extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: ElevatedButton(onPressed: (){
-                Get.to(() => const Login());
+                // Get.to(() => const Login());
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
               }, child: const Text('Close',
                 style: TextStyle(
                   fontSize: 20,

@@ -1,7 +1,7 @@
 import 'package:cbt_flutter/Users/Profile.dart';
 import 'package:cbt_flutter/Users/Question_List.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 
 class Home extends StatefulWidget {
@@ -30,7 +30,8 @@ class _HomeState extends State<Home> {
           }, icon: const Icon(Icons.notifications_active_rounded), color: Colors.orange,),
           InkWell(
             onTap: (){
-              Get.to(()=> const Profile());
+              // Get.to(()=> const Profile());
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
             },
             child: const CircleAvatar(
               backgroundColor: Colors.orange
@@ -87,7 +88,8 @@ class _HomeState extends State<Home> {
                       elevation: 10,
                       child: ListTile(
                         onTap: (){
-                          Get.to(() => const Question_List());
+                          // Get.to(() => const Question_List());
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Question_List()));
                         },
                         title: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

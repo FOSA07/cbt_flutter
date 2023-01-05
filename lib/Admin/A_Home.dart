@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 
 import 'Question_Upload.dart';
 
@@ -89,7 +89,8 @@ class _A_HomeState extends State<A_Home> {
                       elevation: 10,
                       child: ListTile(
                         onTap: (){
-                          Get.to(() => const Question_Upload());
+                          // Get.to(() => const Question_Upload());
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const Question_Upload()));
                         },
                         title: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

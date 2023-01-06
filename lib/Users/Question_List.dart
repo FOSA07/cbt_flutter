@@ -1,9 +1,5 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-// import 'package:get/get.dart';
-=======
->>>>>>> 5796c8dc22224b63ae8d132abae9431fe59906e7
 
 // ignore: camel_case_types
 class Question_List extends StatefulWidget {

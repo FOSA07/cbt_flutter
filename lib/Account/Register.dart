@@ -7,7 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+<<<<<<< HEAD
 // import 'package:get/get.dart';
+=======
+>>>>>>> 5796c8dc22224b63ae8d132abae9431fe59906e7
 
 import 'Change.dart';
 

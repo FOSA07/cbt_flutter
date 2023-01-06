@@ -2,12 +2,11 @@ import 'dart:async';
 
 import 'package:cbt_flutter/Account/login.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
 
-  runApp(const GetMaterialApp(home: MyApp(),debugShowCheckedModeBanner: false,));
+  runApp(MaterialApp(home: const MyApp(), debugShowCheckedModeBanner: false,));
 }
 
  class MyApp extends StatefulWidget {
@@ -22,7 +21,9 @@ void main() {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3),() =>Get.off (() => const OnBoard()));
+    Timer(const Duration(seconds: 3),() => Navigator.pushReplacement(
+      context, MaterialPageRoute(builder: (context) => const OnBoard())));
+    // Get.off (() => const OnBoard()));
   }
   
    @override
@@ -192,7 +193,8 @@ void main() {
                      width: MediaQuery.of(context).size.width*0.8,
                      height: 50,
                      child: ElevatedButton(onPressed: (){
-                       Get.off(() => const Login());
+                      //  Get.off(() => const Login());
+                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Login()));
                      }, child: const Text('Get Started',
                         style: TextStyle(
                           fontSize: 20,

@@ -1,6 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 // ignore: camel_case_types
 class Question_List extends StatefulWidget {
@@ -22,7 +22,8 @@ class _Question_ListState extends State<Question_List> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(onPressed: (){
-          Get.back();
+          // Get.back();
+          Navigator.pop(context);
         }, icon: const Icon(Icons.arrow_back_ios_rounded)),
         elevation: 0,
         backgroundColor: Colors.white,

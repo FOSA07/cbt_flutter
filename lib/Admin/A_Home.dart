@@ -1,3 +1,5 @@
+import 'package:cbt_flutter/Admin/CreateSubject.dart';
+import 'package:cbt_flutter/Admin/SubjectList.dart';
 import 'package:flutter/material.dart';
 
 
@@ -90,7 +92,7 @@ class _A_HomeState extends State<A_Home> {
                       child: ListTile(
                         onTap: (){
                           // Get.to(() => const Question_Upload());
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const Question_Upload()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => CreateSubject()));
                         },
                         title: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -99,16 +101,83 @@ class _A_HomeState extends State<A_Home> {
                               backgroundColor: Colors.green[200],
                               child: const Icon(Icons.notifications,color: Colors.white,),
                             ),
-                            const Text('English',
+                            FittedBox(
+                              child: const Text('Create Subject',
+                                style: TextStyle(
+                                    color: Colors.white
+                                ),
+                              ),
+                            ),
+                            
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 170,
+                    width: MediaQuery.of(context).size.width*0.4,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ViewSubjects()));
+                      },
+
+                      child: Card(
+                        color: Colors.green[800],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25)
+                        ),
+                        elevation: 10,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.green[200],
+                              child: const Icon(Icons.notifications,color: Colors.white,),
+                            ),
+                            const Text('View Subject',
                               style: TextStyle(
                                   color: Colors.white
                               ),
                             ),
-                            const Text('140 questions',
+                            
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    height: 170,
+                    width: MediaQuery.of(context).size.width*0.4,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Question_Upload()));
+                      },
+                      child: Card(
+                        color: Colors.green[800],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25)
+                        ),
+                        elevation: 10,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.green[200],
+                              child: const Icon(Icons.notifications,color: Colors.white,),
+                            ),
+                            const Text('Upload Questions',
                               style: TextStyle(
                                   color: Colors.white
                               ),
-                            )
+                            ),
+                            
                           ],
                         ),
                       ),
@@ -130,16 +199,12 @@ class _A_HomeState extends State<A_Home> {
                             backgroundColor: Colors.green[200],
                             child: const Icon(Icons.notifications,color: Colors.white,),
                           ),
-                          const Text('Mathematics',
+                          const Text('View Questions',
                             style: TextStyle(
                                 color: Colors.white
                             ),
                           ),
-                          const Text('250 questions',
-                            style: TextStyle(
-                                color: Colors.white
-                            ),
-                          )
+                          
                         ],
                       ),
                     ),
@@ -166,16 +231,12 @@ class _A_HomeState extends State<A_Home> {
                             backgroundColor: Colors.green[200],
                             child: const Icon(Icons.notifications,color: Colors.white,),
                           ),
-                          const Text('Chemistry',
+                          const Text('Delete Questions',
                             style: TextStyle(
                                 color: Colors.white
                             ),
                           ),
-                          const Text('120 questions',
-                            style: TextStyle(
-                                color: Colors.white
-                            ),
-                          )
+                          
                         ],
                       ),
                     ),
@@ -196,82 +257,12 @@ class _A_HomeState extends State<A_Home> {
                             backgroundColor: Colors.green[200],
                             child: const Icon(Icons.notifications,color: Colors.white,),
                           ),
-                          const Text('Biology',
+                          const Text('Sample Test',
                             style: TextStyle(
                                 color: Colors.white
                             ),
                           ),
-                          const Text('80 questions',
-                            style: TextStyle(
-                                color: Colors.white
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    height: 170,
-                    width: MediaQuery.of(context).size.width*0.4,
-                    child: Card(
-                      color: Colors.green[800],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25)
-                      ),
-                      elevation: 10,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.green[200],
-                            child: const Icon(Icons.notifications,color: Colors.white,),
-                          ),
-                          const Text('Physics',
-                            style: TextStyle(
-                                color: Colors.white
-                            ),
-                          ),
-                          const Text('255 questions',
-                            style: TextStyle(
-                                color: Colors.white
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 170,
-                    width: MediaQuery.of(context).size.width*0.4,
-                    child: Card(
-                      color: Colors.green[800],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25)
-                      ),
-                      elevation: 10,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.green[200],
-                            child: const Icon(Icons.notifications,color: Colors.white,),
-                          ),
-                          const Text('Literature',
-                            style: TextStyle(
-                                color: Colors.white
-                            ),
-                          ),
-                          const Text('412 questions',
-                            style: TextStyle(
-                                color: Colors.white
-                            ),
-                          )
+                          
                         ],
                       ),
                     ),

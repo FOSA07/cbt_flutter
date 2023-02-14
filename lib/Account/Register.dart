@@ -2,6 +2,7 @@
 import 'package:cbt_flutter/Account/login.dart';
 import 'package:cbt_flutter/PublicFunction/mainFunctions.dart';
 import 'package:cbt_flutter/Users/Home.dart';
+import 'package:cbt_flutter/api\'s/account.dart';
 import 'package:cbt_flutter/api\'s/apiService.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
@@ -181,7 +182,7 @@ class _RegisterState extends State<Register> {
                               // await ApiService().getUsers().then((value) {
                               //   context.loaderOverlay.hide();
                               // });
-                              String response=await ApiService().registerUser(
+                              String response=await AccountRequest().registerUser(
                                 _password.text, 
                                 _username.text, 
                                 _first_name.text, 

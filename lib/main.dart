@@ -1,12 +1,20 @@
 import 'dart:async';
 
 import 'package:cbt_flutter/Account/login.dart';
+import 'package:cbt_flutter/Providers/provider1.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
 
-  runApp(MaterialApp(home: const MyApp(), debugShowCheckedModeBanner: false,));
+  runApp(ChangeNotifierProvider(
+
+    create:  (context) => providerModel(),
+    child: MaterialApp(
+      home: const MyApp(), debugShowCheckedModeBanner: false,),
+  )
+  );
 }
 
  class MyApp extends StatefulWidget {
@@ -23,7 +31,7 @@ void main() {
     super.initState();
     Timer(const Duration(seconds: 3),() => Navigator.pushReplacement(
       context, MaterialPageRoute(builder: (context) => const OnBoard())));
-    // Get.off (() => const OnBoard()));
+    // // Get.off (() => const OnBoard()));
   }
   
    @override

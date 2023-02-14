@@ -1,7 +1,10 @@
 import 'package:cbt_flutter/Account/Change.dart';
 import 'package:cbt_flutter/Account/Register.dart';
+import 'package:cbt_flutter/Admin/A_Home.dart';
+import 'package:cbt_flutter/Providers/provider1.dart';
 import 'package:cbt_flutter/PublicFunction/mainFunctions.dart';
 import 'package:cbt_flutter/Users/Home.dart';
+import 'package:cbt_flutter/api\'s/account.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 import 'package:flutter_signin_button/button_list.dart';
@@ -9,6 +12,7 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:cbt_flutter/api\'s/apiService.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:provider/provider.dart';
 
 
 class Login extends StatefulWidget {
@@ -30,6 +34,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    final hold= Provider.of<providerModel>(context);
     return LoaderOverlay(
       useDefaultLoading: false,
       overlayWidget: Center(
@@ -127,10 +132,12 @@ class _LoginState extends State<Login> {
                               // Get.off(() => const Home());
                               if(_form.currentState!.validate()){
                                 context.loaderOverlay.show();
-                                String response=await ApiService().login(_username.text,_password.text);
-                                if(response=='success'){
+                                String response=await AccountRequest().login(_username.text,_password.text);
+                                print(response);
+                                if(response.contains('success')){
+                                  hold.setAccess(response.replaceFirst('success', ''));
                                   context.loaderOverlay.hide();
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Home())); 
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const A_Home())); 
                                 }else if(response=='heroku error'){
                                   context.loaderOverlay.hide();
                                   MainFunction().dispDial(context, 'Error', 'Unable to connect');
@@ -157,7 +164,8 @@ class _LoginState extends State<Login> {
                             const SizedBox(height: 20,),
                             TextButton(onPressed: (){
                               // Get.to(()=> const Change_Password());
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const Change_Password()));
+                              // Navigator.push(context, MaterialPageRoute(builder: (context) => const Change_Password()));
+                              ApiService().addQuestion();
                             }, child: const Text('Forget Password?',
                               style: TextStyle(
                                   color: Colors.orange

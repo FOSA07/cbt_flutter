@@ -1,6 +1,8 @@
 import 'package:cbt_flutter/Users/Profile.dart';
 import 'package:cbt_flutter/Users/Question_List.dart';
+import 'package:cbt_flutter/api\'s/account.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 // import 'package:get/get.dart';
 
 
@@ -12,8 +14,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

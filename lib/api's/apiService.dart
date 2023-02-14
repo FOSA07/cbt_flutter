@@ -59,96 +59,27 @@ class ApiService{
   }
   }
 
-  Future<String> registerUser(String password, String username, String first_name,
-    String last_name, String email) async{
-    String status='unable to connect';
+  Future addQuestion() async{
 
-    try{
-      var url=Uri.parse(ApiConstants.baseUrl + '/api/accounts');
-    final response =await http.post(
-      Uri.parse(ApiConstants.baseUrl + '/api/accounts/'),
-      // Uri.parse("https://"),
-      headers: <String,String>{
-        // 'Content-Type': 'application/json',
-        HttpHeaders.contentTypeHeader: "application/json",
-        "Connection": "Keep-Alive"
-      },
-      
-      body: jsonEncode(<String, String>{
-        "email": email,
-        "password": password,
-        "username": username,
-        "last_name": last_name,
-        "first_name": first_name
-      }),
-      
-    );
+    var headers = {
+  'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDY0MjE4LCJpYXQiOjE2NzQ0NjI0MTgsImp0aSI6ImZlNzIzOWU2MTRhYjQyODJiYTY5YTllMDhmNjg1ZjZiIiwidXNlcl9pZCI6IjQxY2E3ZGNmLTNkYmEtNDg5ZS05N2JiLWMwODEwZDk1MWNkMCJ9.wqVIRR93Z7YbfK_Y2osaVNtRnHF9VYiTjmYO2aIp8lY'
+};
+var request = http.MultipartRequest('POST', Uri.parse('jamb-api.onrender.com/api/questions/'));
+request.fields.addAll({
+  'subject': 'b62ad4be-bf71-4706-a678-d5030e9d6a6e'
+});
+request.files.add(await http.MultipartFile.fromPath('file', '/C:/Users/USER/Documents/jamb sample question.xlsx'));
+request.headers.addAll(headers);
 
-    // print(response.body);
-    status=response.body;
-    // print(response.);
-    
-    if(response.statusCode == 200 || response.statusCode==201){
-      status='success';
-      
-    }else if(response.statusCode == 400){
-      status='an error occured';
-      String resp=response.body;
-      if(resp.contains('Enter a valid email address.')){
-        status='Enter a valid email address.';
-      }
-    }
-    if(response.body.contains("user with this Email address already exists.")){
-      status='user with the Email address already exists.';
-    }else if(response.body.contains("A user with that username already exists.")){
-      status='A user with the username already exists.';
-    }
-  
-  }catch(e){
-    status='unable to connect';
-  }
+http.StreamedResponse response = await request.send();
 
-  return status;   
-  }
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
 
-
-
-  Future login(String username, String password) async{
-    String status='pending';
-    try{
-      var url=Uri.parse(ApiConstants.baseUrl + '/api/token');
-    final response =await http.post(
-      Uri.parse(ApiConstants.baseUrl + '/api/token/'),
-      // Uri.parse("https://"),
-      headers: <String,String>{
-        // 'Content-Type': 'application/json',
-        HttpHeaders.contentTypeHeader: "application/json",
-        "Connection": "Keep-Alive"
-      },
-      
-      body: jsonEncode(<String, String>{
-        "password": password,
-        "username": username,
-      }),
-      
-    );
-
-
-    status=response.body;
-    if(status.contains('No active account found with the given credentials')){
-      status='user not found';
-    }
-    if(response.statusCode == 200){
-      status='success';
-      
-    }else if(response.statusCode == 400){
-    }
-  
-  }catch(e){
-    status='heroku error';
-
-  }
-    return status;
   }
 
   
